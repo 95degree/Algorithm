@@ -1,4 +1,3 @@
-```java
 import java.util.Scanner;
 import java.util.*;
 
@@ -17,4 +16,3 @@ public class Solution {
         System.out.println(stringBuilder.toString());
     }
 }
-```
