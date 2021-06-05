@@ -13,7 +13,7 @@ class Solution {
 }
 
 //char로 풀어본 결과 시간이 훨씬 빠르다 메모리는 비슷
-import java.util. *;
+import java.util.*;
 class Solution {
     public boolean solution(int x) {
         boolean answer = true;
