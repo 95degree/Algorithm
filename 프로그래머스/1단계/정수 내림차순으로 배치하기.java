@@ -2,7 +2,7 @@ import java.util. *;
 class Solution {
     public long solution(long n) {
         long answer = 0;
-        char[] numCharArray = String.valueOf(n).toCharArray();
+        char[] numCharArray = Long.toString(n).toCharArray();
         List<Integer> list = new ArrayList<>();
         for(char num : numCharArray){
             list.add(num -'0');
