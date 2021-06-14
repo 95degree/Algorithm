@@ -10,10 +10,10 @@ class Solution {
         
         for(int i=2; i<=(int)Math.sqrt(n); i++){
             if(num[i] == true){
-                int j =2;
-                while(i*j<=n){
-                    num[i*j] = false;
-                    j++;
+                int j =2;              // 이 부분을 좀 더 간단하게 표현이 가능하다.
+                while(i*j<=n){         // for(int j = i*2; j<=n; j+=i ){ 
+                    num[i*j] = false;  //     num[j] = false;}
+                    j++;               //
                 }
             }
         }
