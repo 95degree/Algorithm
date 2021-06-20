@@ -35,3 +35,32 @@ class Solution {
         return sr.toString()+a;
     }
 }
+
+// | OR 연산자로 푸는 방법
+import java.util.*;
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        int length = arr1.length;
+        StringBuilder sr = new StringBuilder();
+        for(int i=0; i<n; i++){
+            sr.setLength(0);
+            String a = Integer.toBinaryString(arr1[i]|arr2[i]);
+            for(int j=0; j<n-a.length(); j++){
+                sr.append("0");
+            }
+            a = sr.toString()+a;
+            sr.setLength(0);
+            for(int k=0; k<a.length(); k++){
+                    if(a.charAt(k) == '0'){
+                        sr.append(" ");
+                    }
+                    else{
+                        sr.append("#");
+                    }  
+                }
+            answer[i] = sr.toString();
+        }
+        return answer;
+    }
+}
