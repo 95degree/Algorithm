@@ -36,7 +36,7 @@ class Solution {
     }
 }
 
-// | OR 연산자로 푸는 방법
+// 비트 연산자로 푸는 방법
 import java.util.*;
 class Solution {
     public String[] solution(int n, int[] arr1, int[] arr2) {
