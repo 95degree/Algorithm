@@ -1,3 +1,4 @@
+/*사실 제곱수만 항상 약수의 갯수가 홀수이고 나머지는 짝수이다.*/
 import java.util.*;
 class Solution {
     public int solution(int left, int right) {
