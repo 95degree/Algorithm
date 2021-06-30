@@ -1,3 +1,32 @@
+//가장 깔끔 그냥 애초에 7을 넣고 시작
+import java.util.*;
+class Solution {
+    public int[] solution(int[] lottos, int[] win_nums) {
+        int[] answer = {7,7};
+        int zeroNum = 0;
+        int winNum =0;
+        for(int i=0; i<lottos.length; i++){
+            if(lottos[i] == 0){
+                zeroNum++;
+            }
+            for(int j=0; j<win_nums.length; j++){
+                if(lottos[i] == win_nums[j]){
+                    winNum++;
+                    break;
+                }
+            }
+        }
+        zeroNum+=winNum;
+        answer[0] -= zeroNum;
+        answer[1] -= winNum;
+        for(int i =0; i<answer.length; i++){
+            if(answer[i] > 5)
+                answer[i] =6;
+        }
+        return answer;
+    }
+}
+
 import java.util.*;
 class Solution {
     public int[] solution(int[] lottos, int[] win_nums) {
