@@ -1,3 +1,5 @@
+//a,b,c의 최대 공배수는 (a와b의 최대 공배수 와 c)의 최대 공배수이다.
+
 import java.util.*;
 class Solution {
     public int solution(int[] arr) {
