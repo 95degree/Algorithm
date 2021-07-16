@@ -1,4 +1,5 @@
-//아직 못품//
+//문자를 더하다가 끝 문자까지 했을때 break를 나오는 부분 구현을 계속 실수 했다.//
+//반복문을 멈춰야 되는 부분을 잘 생각하면서 풀자//
 import java.util.*;
 class Solution {
     public int[] solution(String msg) {
@@ -9,20 +10,23 @@ class Solution {
             map.put(String.valueOf((char)('A'+i)),i+1);
         }
         int index = 26;
-        int number = 1;
-        String str = msg.substring(0,1);
-        while(number<msg.length()){
-            str = msg.substring(number-1,number);
-            while(map.containsKey(str) && number<msg.length()){
-                str += msg.charAt(number++);
+        for(int i = 0; i<msg.length(); i++){
+            String word = String.valueOf(msg.charAt(i));
+            while(map.containsKey(word)){
+                i++;
+                if(i == msg.length()){
+                    break;
+                }
+                word+=msg.charAt(i);
             }
-            answerList.add(map.get(str.substring(0,str.length()-1)));
-            System.out.print(str.substring(0,str.length()-1)+" ");
-            if(!map.containsKey(str)){
-                map.put(str,++index);
+            if(i==msg.length()){
+                answerList.add(map.get(word));
+                break;
             }
+            answerList.add(map.get(word.substring(0,word.length()-1)));
+            map.put(word,++index);
+            i--;
         }
-        answerList.add(map.get(str));
         answer = new int[answerList.size()];
         for(int i =0; i<answer.length; i++){
             answer[i] = answerList.get(i);
