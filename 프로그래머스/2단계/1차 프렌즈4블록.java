@@ -1,4 +1,4 @@
-//실패 내일 다시 도전//
+//그냥 break를 안써서 실패 한 거였다니 ㅠㅠㅠㅠ 갑자기 아침에 푸는데 break를 넣어야 한다는 사실을 알게 되었다.//
 import java.util.*;
 class Solution {
     public boolean[][] map;
@@ -62,6 +62,7 @@ class Solution {
                                 array[index][j] = ' ';
                                 map[i][j] = false;
                                 map[index][j] = true;
+                                break;
                             }
                         }
                     }
