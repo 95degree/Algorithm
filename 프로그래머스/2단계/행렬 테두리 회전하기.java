@@ -21,7 +21,7 @@ class Solution {
         int first = map[yIndex][turnMap[1]-1];
         int min = first;
         for(int i = yIndex; i<turnMap[2]-1; i++){
-            map[i][turnMap[1]-1] = map[i+1][turnMap[1]-1];
+            map[i][xIndex] = map[i+1][xIndex];
             yIndex++;
             min = Math.min(map[i][turnMap[1]-1],min);
         }
