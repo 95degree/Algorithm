@@ -6,7 +6,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            StringBuilder sr = new StringBuilder();
             StringTokenizer str = new StringTokenizer(br.readLine());
             int n = Integer.parseInt(str.nextToken());
             long m = Integer.parseInt(str.nextToken());
