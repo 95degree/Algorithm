@@ -16,10 +16,8 @@ public class Main {
             height = Integer.parseInt(str.nextToken());
         }
 
-        public void compare(People people) {
-            int peopleWeight = people.weight;
-            int peopleHeight = people.height;
-            if (weight < peopleWeight && height < peopleHeight) {
+        public void compare(People ComparePeople) {
+            if (weight <  ComparePeople.weight && height <  ComparePeople.height) {
                 rank++;
             }
         }
