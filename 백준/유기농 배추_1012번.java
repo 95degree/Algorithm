@@ -123,6 +123,7 @@ public class Main {
                         tmp[0] = nr;
                         tmp[1] = nc;
                         queue.add(tmp);
+                        //방문 처리를 하지 않으면 계속 추가 한다. 방문처리를 //
                         ground[tmp[0]][tmp[1]] = 0;
                     }
                 }
