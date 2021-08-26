@@ -1,3 +1,4 @@
+//dfs//
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +9,6 @@ public class Main {
     public static int[] indexY = {1,-1,0,0};
     public static int[] indexX = {0,0,-1,1};
     public static int n;
-
 
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
@@ -27,7 +27,7 @@ public class Main {
                 for(int j=0; j<n; j++){
                     if(map[i][j] == 1){
                         answer++;
-                        list.add(bfs(i,j));
+                       list.add(dfs(i,j,1));
                     }
                 }
             }
@@ -41,6 +41,22 @@ public class Main {
             e.printStackTrace();
         }
     }
+    private static int dfs(int i, int j, int depth){
+        map[i][j] = 0;
+        for(int p =0; p<indexY.length; p++){
+            int y = i+indexY[p];
+            int x = j+indexX[p];
+            if(y>=0 && x>=0 && y<n && x<n){
+                if(map[y][x] == 1){
+                   depth = dfs(y,x,depth+1);
+                }
+            }
+        }
+        return depth;
+    }
+}
+
+//bfs//
     private static int bfs(int i, int j){
         int answer = 0;
         Queue<int[]>queue = new LinkedList<>();
