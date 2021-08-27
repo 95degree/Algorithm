@@ -1,3 +1,6 @@
+//너무 어려워서 결국 어떻게 풀었는지 보고 풀었다.  일단 1~4사분면이 어떻게 나눠지는지 파악하고   r, c가 어느 사분면에 위치해 있는지 알아내고 그걸 다시 범위를 줄이는 식으로 해나가면서 풀면 된다.//
+//그리고 결국 n값이 1이 되면 정확히 r c에 위치해 있는다//
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
