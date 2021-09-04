@@ -135,7 +135,8 @@ public class Main {
     
     private static void cut(int startX, int startY, int length) {
        if(checkArray(startX,startY,length)){
-           check[map[startX][startY]]++;
+          //-1 0 1 -> 0 1 2 index로 체크 가능//
+           check[map[startX][startY]+1]++;
            return;
        }
        int newLength = length/3;
