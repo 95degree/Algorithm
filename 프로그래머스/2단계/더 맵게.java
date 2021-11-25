@@ -1,3 +1,4 @@
+//최소 스코빌이 K 이상이기만 하면 된다. !!! 일일이 poll할 필요없음//
 import java.util.*;
 class Solution {
     public int solution(int[] scoville, int K) {
