@@ -35,7 +35,7 @@ public class Main {
 
     static int search() {
         int left = 1;
-        int right = m;
+        int right = x[x.length - 1];
         int answer = 0;
         while (left <= right) {
             int mid = (left + right) / 2;
@@ -46,7 +46,7 @@ public class Main {
                 right = mid - 1;
             }
         }
-        return Math.min(answer,x[x.length-1]);
+        return answer;
     }
 
     static boolean check(int d) {
@@ -54,6 +54,6 @@ public class Main {
         for (int money : x) {
             count -= Math.min(money, d);
         }
-        return count>=0;
+        return count >= 0;
     }
 }
