@@ -1,3 +1,57 @@
+//1. 투 포인터, 2. 이분탐색
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class Solution {
+    static StringBuilder sr = new StringBuilder();
+    static int n;
+    static int[] w;
+    static int answer = Integer.MAX_VALUE;
+    static int[] save = new int[2];
+
+    public static void main(String[] args) throws IOException {
+        input();
+        output();
+    }
+
+    static void input() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        w = new int[n];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            w[i] = Integer.parseInt(st.nextToken());
+        }
+        Arrays.sort(w);
+        twoPointer();
+    }
+
+    static void twoPointer() {
+        int left = 0;
+        int right = w.length - 1;
+        while (left < right) {
+            int sum =w[left] + w[right];
+            if (Math.abs(sum) < answer) {
+                answer = Math.abs(sum);
+                save[0] = w[left];
+                save[1] = w[right];
+            }
+            if (sum > 0) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+    }
+
+    static void output() {
+        System.out.println(save[0] + " " + save[1]);
+    }
+}
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
