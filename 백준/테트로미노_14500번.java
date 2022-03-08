@@ -1,71 +1,74 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
-class Main {
+public class Main {
+
+    static StringBuilder sr = new StringBuilder();
     static int[][] map;
-    static boolean[][] visit;
+    static int n;
+    static int m;
     static int answer = 0;
     static int[] yMove = {0, 0, -1, 1};
-    static int[] xMove = {-1, 1, 0, 0};
+    static int[] xMove = {1, -1, 0, 0};
+    static boolean[][] visit;
 
-    public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            StringTokenizer str = new StringTokenizer(br.readLine());
-            int y = Integer.parseInt(str.nextToken());
-            int x = Integer.parseInt(str.nextToken());
-            map = new int[y][x];
-            visit = new boolean[y][x];
-            for (int i = 0; i < y; i++) {
-                str = new StringTokenizer(br.readLine());
-                for (int j = 0; j < x; j++) {
-                    map[i][j] = Integer.parseInt(str.nextToken());
-                }
+    public static void main(String[] args) throws IOException {
+        input();
+        output();
+    }
+
+    static void input() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        map = new int[n][m];
+        visit = new boolean[n][m];
+        for (int i = 0; i < n; i++) {
+            String[] s = br.readLine().split(" ");
+            for (int j = 0; j < m; j++) {
+                map[i][j] = Integer.parseInt(s[j]);
             }
-            for (int i = 0; i < y; i++) {
-                for (int j = 0; j < x; j++) {
-                    dfs(0, 0, i, j);
-                    fiverDfs(i, j);
-                }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                visit[i][j] = true;
+                dfs(1, map[i][j], i, j);
+                figure(i, j);
+                visit[i][j] = false;
             }
-            System.out.println(answer);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-     
-    //sum에 시작점을 넣어주지 않아도 어차피 다른 점에서 그 시작점을 들리기 때문에 굳이 넣어줄 필요가 없다.//
+
     static void dfs(int depth, int sum, int y, int x) {
         if (depth == 4) {
-            if (sum > answer) {
-                answer = sum;
-            }
-            return;
-        }
-        for (int i = 0; i < 4; i++) {
-            int newY = yMove[i] + y;
-            int newX = xMove[i] + x;
-            if (newY >= 0 && newY < map.length && newX >= 0 && newX < map[0].length && !visit[newY][newX]) {
+            answer = Math.max(answer, sum);
+        } else {
+            
+            for (int i = 0; i < 4; i++) {
+                int newY = y + yMove[i];
+                int newX = x + xMove[i];
+                if (newY < 0 || newY >= n || newX < 0 || newX >= m) continue;
+                if (visit[newY][newX]) continue;
                 visit[newY][newX] = true;
                 dfs(depth + 1, sum + map[newY][newX], newY, newX);
                 visit[newY][newX] = false;
             }
         }
     }
-    //ㅗ 는 십자형태로 체크하면서 진행하면 된다.
-    static void fiverDfs(int y, int x) {
-        int sum = map[y][x];
+
+    static void figure(int y, int x) {
         int min = Integer.MAX_VALUE;
         int wing = 4;
+        int sum = map[y][x];
         for (int i = 0; i < 4; i++) {
-            int newY = yMove[i] + y;
-            int newX = xMove[i] + x;
-
-            if (wing < 3) {
-                return;
-            }
-            if (newY < 0 || newY >= map.length || newX < 0 || newX >= map[0].length) {
+            int newY = y + yMove[i];
+            int newX = x + xMove[i];
+            if (wing < 3) return;
+            if (newY < 0 || newY >= n || newX < 0 || newX >= m) {
                 wing--;
                 continue;
             }
@@ -76,6 +79,11 @@ class Main {
         if (wing == 4) {
             sum -= min;
         }
-        answer = Math.max(sum, answer);
+        answer = Math.max(answer, sum);
+    }
+
+
+    static void output() {
+        System.out.println(answer);
     }
 }
